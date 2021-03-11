@@ -37,8 +37,8 @@ class BaseDataLakeBucket(s3.Bucket):
     def default_block_public_access(self):
         return s3.BlockPublicAccess(
             ignore_public_acls=True,
-            block_publick_acls=True,
-            block_publick_policy=True,
+            block_public_acls=True,
+            block_public_policy=True,
             restrict_public_buckets=True,
         )
 
