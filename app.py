@@ -8,10 +8,10 @@ from aws_cdk import core as cdk
 # being updated to use `cdk`.  You may delete this import if you don't need it.
 from aws_cdk import core
 
-from bootcamp_data_platform.bootcamp_data_platform_stack import BootcampDataPlatformStack
+from bootcamp_data_platform.data_lake.stack import DataLakeStack
 
 
 app = cdk.App()
-BootcampDataPlatformStack(app, "bootcamp-data-platform")
+data_lake = DataLakeStack(app)
 
 app.synth()
