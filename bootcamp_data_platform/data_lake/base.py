@@ -27,7 +27,7 @@ class BaseDataLakeBucket(s3.Bucket):
         super().__init__(
             scope,
             id=self.obj_name,
-            block_public_access=self.default_block_publick_access,
+            block_public_access=self.default_block_public_access,
             encryption=self.default_encryption,
             versioned=True,
             **kwargs,
