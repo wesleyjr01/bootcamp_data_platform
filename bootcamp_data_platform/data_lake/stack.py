@@ -2,7 +2,7 @@ from .base import BaseDataLakeBucket, DataLakeLayer
 from aws_cdk import core
 from aws_cdk import aws_s3 as s3
 
-from .. import active_environment
+from ..environment import active_environment
 
 
 class DataLakeStack(core.Stack):
