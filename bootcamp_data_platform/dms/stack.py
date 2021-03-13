@@ -7,7 +7,7 @@ from aws_cdk import (
 
 import json
 
-from ..environment import Environment
+from bootcamp_data_platform.environment import Environment
 from common_stack import CommonStack
 from bootcamp_data_platform.data_lake.base import BaseDataLakeBucket
 
