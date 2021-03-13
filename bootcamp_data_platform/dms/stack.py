@@ -7,9 +7,9 @@ from aws_cdk import (
 
 import json
 
-from data_platform import Environment
+from ..environment import Environment
 from common_stack import CommonStack
-from data_platform.data_lake.base import BaseDataLakeBucket
+from bootcamp_data_platform.data_lake.base import BaseDataLakeBucket
 
 
 class RawDMSRole(iam.Role):
