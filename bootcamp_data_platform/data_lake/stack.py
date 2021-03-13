@@ -1,6 +1,9 @@
-from .base import BaseDataLakeBucket, DataLakeLayer
 from aws_cdk import core
-from aws_cdk import aws_s3 as s3
+from aws_cdk import (
+    aws_s3 as s3,
+)
+
+from .base import BaseDataLakeBucket, DataLakeLayer
 
 from ..environment import active_environment
 
@@ -8,9 +11,7 @@ from ..environment import active_environment
 class DataLakeStack(core.Stack):
     def __init__(self, scope: core.Construct, **kwargs):
         self.deploy_env = active_environment
-        super().__init__(
-            scope, id=f"{self.deploy_env.value}--data-lake-stack", **kwargs
-        )
+        super().__init__(scope, id=f"{self.deploy_env.value}-data-lake-stack", **kwargs)
 
         self.data_lake_raw_bucket = BaseDataLakeBucket(
             self, deploy_env=self.deploy_env, layer=DataLakeLayer.RAW
@@ -31,11 +32,11 @@ class DataLakeStack(core.Stack):
         )
 
         # Data Lake Processed
-        self.data_lake_proccessed_bucket = BaseDataLakeBucket(
+        self.data_lake_processed_bucket = BaseDataLakeBucket(
             self, deploy_env=self.deploy_env, layer=DataLakeLayer.PROCESSED
         )
 
-        # Data Lake Processed
+        # Data Lake Aggregated
         self.data_lake_aggregated_bucket = BaseDataLakeBucket(
             self, deploy_env=self.deploy_env, layer=DataLakeLayer.AGGREGATED
         )

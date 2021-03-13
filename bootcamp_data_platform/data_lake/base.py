@@ -8,7 +8,7 @@ from ..environment import Environment
 class DataLakeLayer(Enum):
     RAW = "raw"
     PROCESSED = "processed"
-    AGGREGATED = "aggregate"
+    AGGREGATED = "aggregated"
 
 
 class BaseDataLakeBucket(s3.Bucket):
@@ -26,12 +26,14 @@ class BaseDataLakeBucket(s3.Bucket):
         )
         super().__init__(
             scope,
-            id=self.obj_name,
+            id=self.obj_name,  # id logico do cloudformation
+            bucket_name=self.obj_name,
             block_public_access=self.default_block_public_access,
             encryption=self.default_encryption,
             versioned=True,
             **kwargs,
         )
+        self.set_default_lifecycle_rules()
 
     @property
     def default_block_public_access(self):
