@@ -19,8 +19,9 @@ class DatabricksStack(core.Stack):
 
     def __init__(self, scope: core.Construct, **kwargs) -> None:
         self.deploy_env = active_environment
+        self.bucket_name = f"s3-{self.deploy_env.value}-belisco-databricks-bucket01"
         super().__init__(
-            scope, id=f"{self.deploy_env.value}-databricks-stack01", **kwargs
+            scope, id=f"{self.deploy_env.value}-databricks-stack", **kwargs
         )
 
         cross_account_role = iam.Role(
@@ -147,8 +148,8 @@ class DatabricksStack(core.Stack):
 
         bucket = s3.Bucket(
             self,
-            id=f"s3-{self.deploy_env.value}-belisco-databricks-bucket",
-            bucket_name=f"s3-{self.deploy_env.value}-belisco-databricks-bucket",
+            id=self.bucket_name,
+            bucket_name=self.bucket_name,
         )
         bucket.add_to_resource_policy(
             iam.PolicyStatement(
