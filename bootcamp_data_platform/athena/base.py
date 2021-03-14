@@ -11,7 +11,7 @@ class BaseAthenaBucket(s3.Bucket):
         self, scope: core.Construct, deploy_env: Environment, **kwargs
     ) -> None:
         self.deploy_env = deploy_env
-        self.obj_name = f"s3-belisco-{self.deploy_env.value}-data-lake-athena-results"
+        self.obj_name = f"s3-belisco-{self.deploy_env.value}-datalake-athena-results"
 
         super().__init__(
             scope,
