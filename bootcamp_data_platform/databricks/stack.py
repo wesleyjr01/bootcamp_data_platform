@@ -20,7 +20,7 @@ class DatabricksStack(core.Stack):
     def __init__(self, scope: core.Construct, **kwargs) -> None:
         self.deploy_env = active_environment
         super().__init__(
-            scope, id=f"{self.deploy_env.value}-databricks-stack", **kwargs
+            scope, id=f"{self.deploy_env.value}-databricks-stack01", **kwargs
         )
 
         cross_account_role = iam.Role(
