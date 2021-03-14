@@ -28,5 +28,5 @@ redshift = RedshiftStack(
     data_lake_processed=data_lake.data_lake_processed_bucket,
     common_stack=common_stack,
 )
-databricks - DatabricksStack(app)
+databricks = DatabricksStack(app)
 app.synth()
